@@ -7,6 +7,8 @@ import com.example.test_task1.service.mapper.PageMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class PageService {
@@ -22,5 +24,9 @@ public class PageService {
         Page page = pageMapper.convertPageDtoToPage(pageDto);
         pageRepository.save(page);
         return page;
+    }
+
+    public List<Page> allPages() {
+        return pageRepository.findAll();
     }
 }

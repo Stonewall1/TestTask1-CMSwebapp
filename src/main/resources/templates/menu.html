@@ -9,6 +9,13 @@
 <body>
 <h1>Main Menu</h1>
 <a href="addPage.html" th:href="@{page/add}" class="btn btn-success">Add new page</a>
+<h2>All pages :</h2>
+<table>
+    <tr th:each="page : ${allPages}">
+        <td th:text="${page.menu_label}"></td>
+    </tr>
+</table>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/page")
-public class PageController {
+public class ContentController {
     private final PageService pageService;
 
-    public PageController(PageService pageService) {
+    public ContentController(PageService pageService) {
         this.pageService = pageService;
     }
 
