@@ -27,4 +27,12 @@ public class Page {
     private LocalDateTime published_at;
     private int priority;
 
+    public Page(String title, String description, String menu_label, String h1, LocalDateTime published_at, int priority) {
+        this.title = title;
+        this.description = description;
+        this.menu_label = menu_label;
+        this.h1 = h1;
+        this.published_at = published_at;
+        this.priority = priority;
+    }
 }
