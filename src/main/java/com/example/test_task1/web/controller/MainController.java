@@ -17,7 +17,7 @@ public class MainController {
 
     @GetMapping()
     public String mainMenu(Model model) {
-        model.addAttribute("allPages", pageService.allPages());
+        model.addAttribute("allPages", pageService.allPagesSortedByPriority());
         return "menu";
     }
 
