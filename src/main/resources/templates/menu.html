@@ -13,7 +13,10 @@
 <table>
     <tr th:each="page : ${allPages}">
         <td>
-            <a href="content.html" th:text="${page.menu_label}" th:href="@{content/current}"></a>
+            <form th:action="@{/content/current}">
+                <input th:type="hidden" th:name="pageId" th:value="${page.id}">
+                <button class="btn btn-success"><p th:text="${page.menu_label}"></p></button>
+            </form>
         </td>
     </tr>
 </table>

@@ -1,9 +1,11 @@
 package com.example.test_task1.web.controller;
 
 import com.example.test_task1.dto.PageDto;
+import com.example.test_task1.entity.Page;
 import com.example.test_task1.service.PageService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +36,9 @@ public class ContentController {
     }
 
     @GetMapping("/current")
-    public String currentPage() {
+    public String currentPage(long pageId, Model model) {
+        Page byId = pageService.findById(pageId);
+        model.addAttribute("page", byId);
         return "content";
     }
 }

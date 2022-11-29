@@ -8,10 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
@@ -33,5 +30,10 @@ public class PageService {
     public List<Page> allPagesSortedByPriority() {
         List<Page> list = pageRepository.findAll();
         return list.stream().sorted((o1, o2) -> o2.getPriority() - o1.getPriority()).toList();
+    }
+
+    public Page findById(long id) {
+        Optional<Page> byId = pageRepository.findById(id);
+        return byId.get();
     }
 }
