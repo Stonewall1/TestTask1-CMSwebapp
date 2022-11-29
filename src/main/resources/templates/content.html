@@ -5,6 +5,12 @@
     <title>Content</title>
 </head>
 <body>
+<p th:text="${page}"></p>
 
+
+<form th:action="@{/content/delete}" method="post">
+    <input th:type="hidden" th:name="pageId" th:value="${page.id}">
+    <button class="btn btn-danger">Delete</button>
+</form>
 </body>
 </html>

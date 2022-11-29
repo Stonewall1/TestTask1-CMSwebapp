@@ -4,7 +4,6 @@ import com.example.test_task1.dto.PageDto;
 import com.example.test_task1.entity.Page;
 import com.example.test_task1.repository.PageRepository;
 import com.example.test_task1.service.mapper.PageMapper;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,5 +34,9 @@ public class PageService {
     public Page findById(long id) {
         Optional<Page> byId = pageRepository.findById(id);
         return byId.get();
+    }
+
+    public void deleteById(long id) {
+        pageRepository.deleteById(id);
     }
 }
