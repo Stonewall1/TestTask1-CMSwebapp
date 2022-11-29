@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/page")
+@RequestMapping("/content")
 public class ContentController {
     private final PageService pageService;
 
@@ -26,10 +26,15 @@ public class ContentController {
 
     @PostMapping("/add")
     public String addPage(@Valid @ModelAttribute("newPage") PageDto pageDto, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "addPage";
         }
         pageService.save(pageDto);
         return "redirect:/";
+    }
+
+    @GetMapping("/current")
+    public String currentPage() {
+        return "content";
     }
 }

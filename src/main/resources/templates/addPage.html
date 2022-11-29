@@ -5,7 +5,7 @@
     <title>AddPage</title>
 </head>
 <body>
-<form th:action="@{/page/add}" th:object="${newPage}" method="post">
+<form th:action="@{/content/add}" th:object="${newPage}" method="post">
     <input type="text" th:field="*{title}" class="form-control" placeholder="Title"/>
     <br>
     <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red"></p>
