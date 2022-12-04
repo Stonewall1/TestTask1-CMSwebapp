@@ -1,5 +1,6 @@
 package com.example.test_task1.service;
 
+import com.example.test_task1.dto.EditPageDto;
 import com.example.test_task1.dto.PageDto;
 import com.example.test_task1.entity.Page;
 import com.example.test_task1.repository.PageRepository;
@@ -20,6 +21,11 @@ public class PageService {
         this.pageMapper = pageMapper;
     }
 
+    public Page save(Page page) {
+        pageRepository.save(page);
+        return page;
+    }
+
     public Page save(PageDto pageDto) {
         Page page = pageMapper.convertPageDtoToPage(pageDto);
         pageRepository.save(page);
@@ -38,5 +44,9 @@ public class PageService {
 
     public void deleteById(long id) {
         pageRepository.deleteById(id);
+    }
+
+    public Page editPage(Page page, EditPageDto editPageDto) {
+        return pageMapper.convertEditedDtoToPage(page, editPageDto);
     }
 }

@@ -6,7 +6,10 @@
 </head>
 <body>
 <p th:text="${page}"></p>
-
+<form th:action="@{/content/update}" method="get">
+    <input th:type="hidden" th:name="pageId" th:value="${page.id}">
+    <button class="btn btn-warning">Update</button>
+</form>
 
 <form th:action="@{/content/delete}" method="post">
     <input th:type="hidden" th:name="pageId" th:value="${page.id}">

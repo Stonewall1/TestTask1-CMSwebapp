@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EditPage</title>
+</head>
+<body>
+<form th:action="@{/content/update}" th:object="${editedPage}" method="post">
+    <input type="text" th:field="*{title}" class="form-control" placeholder="Title"/>
+    <br>
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red"></p>
+    <br>
+
+    <input type="text" th:field="*{description}" class="form-control" placeholder="Description"/>
+    <br>
+    <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: red"></p>
+    <br>
+
+    <input type="text" th:field="*{menu_label}" class="form-control" placeholder="Menu_label"/>
+    <br>
+    <p th:if="${#fields.hasErrors('menu_label')}" th:errors="*{menu_label}" style="color: red"></p>
+    <br>
+
+    <input type="text" th:field="*{h1}" class="form-control" placeholder="h1"/>
+    <br>
+    <p th:if="${#fields.hasErrors('h1')}" th:errors="*{h1}" style="color: red"></p>
+    <br>
+
+    <input type="number" th:field="*{priority}" class="form-control" placeholder="Priority"/>
+    <br>
+    <p th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}" style="color: red"></p>
+    <br>
+    <input th:type="hidden" th:name="id" th:value="${page.id}">
+    <button class="btn btn-success">Update</button>
+</form>
+<a href="/" class="btn btn-primary">Back</a>
+</body>
+</html>

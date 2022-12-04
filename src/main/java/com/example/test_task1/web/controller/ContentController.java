@@ -1,5 +1,6 @@
 package com.example.test_task1.web.controller;
 
+import com.example.test_task1.dto.EditPageDto;
 import com.example.test_task1.dto.PageDto;
 import com.example.test_task1.entity.Page;
 import com.example.test_task1.service.PageService;
@@ -43,5 +44,22 @@ public class ContentController {
     public String deletePage(long pageId) {
         pageService.deleteById(pageId);
         return "redirect:/";
+    }
+
+    @GetMapping("/update")
+    public String updatePage(long pageId, @ModelAttribute("editedPage") EditPageDto editPageDto, Model model) {
+        model.addAttribute("page", pageService.findById(pageId));
+        return "editPage";
+    }
+
+    @PostMapping("/update")
+    public String updatePage(long id, @Valid @ModelAttribute("editedPage") EditPageDto editPageDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "editPage";
+        }
+        Page byId = pageService.findById(id);
+        Page editedPage = pageService.editPage(byId, editPageDto);
+        pageService.save(editedPage);
+        return "redirect:/content/current";
     }
 }
